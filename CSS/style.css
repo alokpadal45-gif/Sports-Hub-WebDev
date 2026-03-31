@@ -1,0 +1,544 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+}
+
+header {
+  background-color: #1a1a1a;
+  padding: 14px 30px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.logo {
+  color: #f5c518;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 15px;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+
+nav a:hover, nav a.active {
+  background-color: #2ecc71;
+}
+
+.hero {
+  background-color: #1f3d2f;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h2 {
+  font-size: 40px;
+  color: #f5c518;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 24px;
+}
+
+.btn {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #27ae60;
+}
+
+.btn-gray {
+  background-color: #555;
+  margin-top: 12px;
+}
+
+.btn-gray:hover {
+  background-color: #333;
+}
+
+.btn-full {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.topics {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.topics h2, .team h2 {
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #777;
+  margin-bottom: 28px;
+  font-size: 14px;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.topic-card {
+  background-color: white;
+  border: 2px solid #2ecc71;
+  border-radius: 8px;
+  padding: 20px 14px;
+}
+
+.topic-card:hover {
+  background-color: #eafaf1;
+}
+
+.topic-card h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.topic-card p {
+  font-size: 13px;
+  color: #555;
+}
+
+.team {
+  background-color: #f0f0f0;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.member-card {
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 28px 22px;
+  width: 230px;
+  text-align: center;
+}
+
+.member-card:hover {
+  border-color: #2ecc71;
+}
+
+.avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: #2ecc71;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.member-card h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.role {
+  background-color: #2ecc71;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.member-card p {
+  font-size: 13px;
+  color: #555;
+}
+
+footer {
+  background-color: #1a1a1a;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+}
+
+footer p {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.footer-links a {
+  color: #f5c518;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 13px;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.page-top {
+  background-color: #1f3d2f;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.page-top h2 {
+  font-size: 32px;
+  color: #f5c518;
+  margin-bottom: 8px;
+}
+
+.page-top p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.game-box {
+  max-width: 660px;
+  margin: 36px auto;
+  padding: 28px 22px;
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+.game-box h3 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.game-box > p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+.score-area {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  background-color: #f0f0f0;
+  padding: 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.score-label {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.score-num {
+  display: block;
+  font-size: 36px;
+  font-weight: bold;
+  color: #2ecc71;
+  transition: transform 0.2s;
+}
+
+.score-num.bump {
+  transform: scale(1.4);
+}
+
+.goal-net {
+  display: flex;
+  border: 3px solid #333;
+  border-radius: 4px;
+  height: 78px;
+  background-color: #e8f5e9;
+  overflow: hidden;
+}
+
+.net-cell {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #aaa;
+  border-right: 2px dashed #ccc;
+}
+
+.net-cell:last-child {
+  border-right: none;
+}
+
+.net-cell.goal-flash {
+  background-color: #f5c518;
+  color: #111;
+}
+
+.net-cell.save-flash {
+  background-color: #ffcccc;
+  color: #c0392b;
+}
+
+.gk-row {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 16px;
+}
+
+.gk {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: #2ecc71;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease;
+}
+
+.btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 10px 0 14px;
+}
+
+.num-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.circle-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.result-box {
+  min-height: 42px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.result-box.goal, .result-box.run {
+  background-color: #d5f5e3;
+  color: #1e8449;
+}
+
+.result-box.miss, .result-box.out {
+  background-color: #fde8e8;
+  color: #c0392b;
+}
+
+.history-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 14px 0;
+}
+
+.history-box h4 {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.history-box ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.history-box ul li {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: #333;
+}
+
+.vs-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  background-color: #f0f0f0;
+  padding: 14px;
+  border-radius: 8px;
+  margin: 14px 0;
+  text-align: center;
+}
+
+.vs-side p {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.big-num {
+  font-size: 52px;
+  font-weight: bold;
+  color: #2ecc71;
+  display: block;
+}
+
+.vs-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #bbb;
+}
+
+.form-wrapper {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 28px 22px;
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #2ecc71;
+}
+
+.form-group input.error-border,
+.form-group textarea.error-border {
+  border-color: #e74c3c;
+}
+
+.error-msg {
+  display: none;
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.error-msg.show {
+  display: block;
+}
+
+.form-result {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  display: none;
+  font-size: 14px;
+}
+
+.form-result.success {
+  background-color: #d5f5e3;
+  color: #1e8449;
+  display: block;
+}
+
+.form-result.error-result {
+  background-color: #fde8e8;
+  color: #c0392b;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .topics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero h2 {
+    font-size: 26px;
+  }
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .score-area {
+    gap: 20px;
+  }
+  .btn-row {
+    flex-wrap: wrap;
+  }
+}
