@@ -36,13 +36,24 @@ function validateForm() {
   var resultBox = document.getElementById("form-result");
 
   if (isValid) {
-    resultBox.textContent = "Message sent successfully! We will get back to you soon.";
-    resultBox.className = "form-result success";
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("message").value = "";
-  } else {
-    resultBox.textContent = "Please fix the errors above and try again.";
-    resultBox.className = "form-result error-result";
-  }
+  resultBox.textContent = "Message sent successfully! We will get back to you soon.";
+  resultBox.className = "form-result success";
+
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("message").value = "";
+
+  setTimeout(() => {
+    resultBox.textContent = "";
+    resultBox.className = "form-result";
+  }, 3000);
+
+} else {
+  resultBox.textContent = "Please fix the errors above and try again.";
+  resultBox.className = "form-result error-result";
+
+  setTimeout(() => {
+    resultBox.textContent = "";
+    resultBox.className = "form-result";
+  }, 3000);
 }
