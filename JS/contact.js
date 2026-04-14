@@ -23,7 +23,7 @@ function validateForm() {
     isValid = false;
   }
 
-  if (email === "" || email.indexOf("@") === -1) {
+  if (email === "" || !email.includes("@")) {
     document.getElementById("email").classList.add("error-border");
     document.getElementById("email-error").classList.add("show");
     isValid = false;
@@ -42,8 +42,10 @@ function validateForm() {
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
     document.getElementById("message").value = "";
+  }
 
-  } else {
+  // ERROR
+  else {
     resultBox.textContent = "Please fix the errors above and try again.";
     resultBox.className = "form-result error-result";
   }
