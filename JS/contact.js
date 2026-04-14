@@ -1,46 +1,51 @@
 function validateForm() {
-  var name = document.getElementById("name").value.trim();
-  var email = document.getElementById("email").value.trim();
-  var message = document.getElementById("message").value.trim();
+  var nameField = document.getElementById("name");
+  var emailField = document.getElementById("email");
+  var messageField = document.getElementById("message");
 
+  var name = nameField.value.trim();
+  var email = emailField.value.trim();
+  var message = messageField.value.trim();
+
+  var resultBox = document.getElementById("form-result");
   var isValid = true;
 
-  document.getElementById("name").classList.remove("error-border");
-  document.getElementById("email").classList.remove("error-border");
-  document.getElementById("message").classList.remove("error-border");
-  document.getElementById("name-error").classList.remove("show");
-  document.getElementById("email-error").classList.remove("show");
-  document.getElementById("message-error").classList.remove("show");
-  document.getElementById("form-result").className = "form-result";
-  document.getElementById("form-result").textContent = "";
+  [nameField, emailField, messageField].forEach(field =>
+    field.classList.remove("error-border")
+  );
+
+  ["name-error", "email-error", "message-error"].forEach(id =>
+    document.getElementById(id).classList.remove("show")
+  );
+
+  resultBox.className = "form-result";
+  resultBox.textContent = "";
 
   if (name === "") {
-    document.getElementById("name").classList.add("error-border");
+    nameField.classList.add("error-border");
     document.getElementById("name-error").classList.add("show");
     isValid = false;
   }
 
-
   if (email === "" || email.indexOf("@") === -1) {
-    document.getElementById("email").classList.add("error-border");
+    emailField.classList.add("error-border");
     document.getElementById("email-error").classList.add("show");
     isValid = false;
   }
 
   if (message === "") {
-    document.getElementById("message").classList.add("error-border");
+    messageField.classList.add("error-border");
     document.getElementById("message-error").classList.add("show");
     isValid = false;
   }
 
-  var resultBox = document.getElementById("form-result");
-
   if (isValid) {
     resultBox.textContent = "Message sent successfully! We will get back to you soon.";
     resultBox.className = "form-result success";
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("message").value = "";
+
+    nameField.value = "";
+    emailField.value = "";
+    messageField.value = "";
   } else {
     resultBox.textContent = "Please fix the errors above and try again.";
     resultBox.className = "form-result error-result";
