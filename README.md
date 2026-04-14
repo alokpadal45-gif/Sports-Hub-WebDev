@@ -1,8 +1,4 @@
-Here is your **professional README.md** for the full Sports Hub project ✅
-
----
-
-# 🏆 Sports Hub
+🏆 Sports Hub
 
 A fun and interactive web project featuring **mini games (Football & Hand Cricket)** and a **contact form with validation**. Built using **HTML, CSS, and JavaScript**, this project demonstrates DOM manipulation, game logic, animations, and local storage.
 
