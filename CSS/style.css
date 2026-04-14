@@ -38,7 +38,8 @@ nav a {
   border-radius: 4px;
 }
 
-nav a:hover, nav a.active {
+nav a:hover,
+nav a.active {
   background-color: #2ecc71;
 }
 
@@ -71,6 +72,7 @@ nav a:hover, nav a.active {
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
+  font-family: inherit;
 }
 
 .btn:hover {
@@ -99,7 +101,8 @@ nav a:hover, nav a.active {
   text-align: center;
 }
 
-.topics h2, .team h2 {
+.topics h2,
+.team h2 {
   font-size: 32px;
   margin-bottom: 6px;
 }
@@ -112,7 +115,7 @@ nav a:hover, nav a.active {
 
 .topics-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 16px;
 }
 
@@ -378,12 +381,14 @@ footer p {
   text-align: center;
 }
 
-.result-box.goal, .result-box.run {
+.result-box.goal,
+.result-box.run {
   background-color: #d5f5e3;
   color: #1e8449;
 }
 
-.result-box.miss, .result-box.out {
+.result-box.miss,
+.result-box.out {
   background-color: #fde8e8;
   color: #c0392b;
 }
@@ -508,36 +513,33 @@ footer p {
   border-radius: 6px;
   font-weight: bold;
   text-align: center;
-  display: none;
   font-size: 14px;
+  display: none;
 }
 
-.form-result.success {
-  background-color: #d5f5e3;
-  color: #1e8449;
-  display: block;
-}
-
+.form-result.success,
 .form-result.error-result {
-  background-color: #fde8e8;
-  color: #c0392b;
   display: block;
 }
 
 @media (max-width: 600px) {
   .topics-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
+
   .hero h2 {
     font-size: 26px;
   }
+
   .navbar {
     flex-direction: column;
     gap: 10px;
   }
+
   .score-area {
     gap: 20px;
   }
+
   .btn-row {
     flex-wrap: wrap;
   }
