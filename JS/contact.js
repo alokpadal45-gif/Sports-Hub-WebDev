@@ -10,13 +10,13 @@ function validateForm() {
   var resultBox = document.getElementById("form-result");
   var isValid = true;
 
-  [nameField, emailField, messageField].forEach(field =>
-    field.classList.remove("error-border")
-  );
+  [nameField, emailField, messageField].forEach(function(field) {
+    field.classList.remove("error-border");
+  });
 
-  ["name-error", "email-error", "message-error"].forEach(id =>
-    document.getElementById(id).classList.remove("show")
-  );
+  ["name-error", "email-error", "message-error"].forEach(function(id) {
+    document.getElementById(id).classList.remove("show");
+  });
 
   resultBox.className = "form-result";
   resultBox.textContent = "";
@@ -50,4 +50,6 @@ function validateForm() {
     resultBox.textContent = "Please fix the errors above and try again.";
     resultBox.className = "form-result error-result";
   }
+
+  return isValid; 
 }
