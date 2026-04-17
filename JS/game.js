@@ -14,7 +14,10 @@ function removeClasses(ids, classes) {
 }
 
 function shoot(playerDirection) {
+  console.log("Player chose:", playerDirection); // added
   var goalkeeperDirection = directions[Math.floor(Math.random() * 3)];
+  console.log("Goalkeeper chose:", goalkeeperDirection); // added
+
   footballAttempts++;
 
   removeClasses(
@@ -95,6 +98,8 @@ var cricketRuns = 0;
 var cricketOut = false;
 
 function playBall(playerNumber) {
+  console.log("Player number:", playerNumber); // added
+
   var resultBox = document.getElementById("cricket-result");
 
   if (cricketOut) {
@@ -104,6 +109,7 @@ function playBall(playerNumber) {
   }
 
   var computerNumber = Math.floor(Math.random() * 6) + 1;
+  console.log("Computer number:", computerNumber); // added
 
   document.getElementById("player-num").textContent = playerNumber;
   document.getElementById("computer-num").textContent = computerNumber;
