@@ -2,19 +2,31 @@ var footballGoals = 0;
 var footballAttempts = 0;
 var directions = ["left", "center", "right"];
 
+var cricketRuns = 0;
+var cricketOut = false;
+
+const FOOTBALL_KEY = "footballScores";
+const CRICKET_KEY = "cricketScores";
+
+function $(id) {
+  return document.getElementById(id);
+}
+
 window.onload = function () {
-  loadFootballHistory();
-  loadCricketHistory();
+  loadHistory(FOOTBALL_KEY, "football-history", "No previous scores yet");
+  loadHistory(CRICKET_KEY, "cricket-history", "No previous scores yet");
 };
 
 function removeClasses(ids, classes) {
   ids.forEach(id => {
-    document.getElementById(id).classList.remove(...classes);
+    $(id).classList.remove(...classes);
   });
 }
 
+
 function shoot(playerDirection) {
-  var goalkeeperDirection = directions[Math.floor(Math.random() * 3)];
+  var goalkeeperDirection = directions[Math.floor(Math.random() * directions.length)];
+
   footballAttempts++;
 
   removeClasses(
@@ -22,12 +34,12 @@ function shoot(playerDirection) {
     ["goal-flash", "save-flash"]
   );
 
-  var gk = document.getElementById("goalkeeper");
+  var gk = $("goalkeeper");
   var move = { left: "-80px", right: "80px", center: "0px" };
   gk.style.transform = "translateX(" + move[goalkeeperDirection] + ")";
 
-  var resultBox = document.getElementById("football-result");
-  var netCell = document.getElementById("net-" + playerDirection);
+  var resultBox = $("football-result");
+  var netCell = $("net-" + playerDirection);
 
   if (playerDirection !== goalkeeperDirection) {
     footballGoals++;
@@ -37,30 +49,33 @@ function shoot(playerDirection) {
     animateScore("football-goals");
   } else {
     netCell.classList.add("save-flash");
-    resultBox.textContent = "SAVED! The goalkeeper blocked it!";
+    resultBox.textContent = "SAVED!! The goalkeeper blocked it!";
     resultBox.className = "result-box miss";
   }
 
-  document.getElementById("football-goals").textContent = footballGoals;
-  document.getElementById("football-attempts").textContent = footballAttempts;
+  updateFootballUI();
+}
+
+function updateFootballUI() {
+  $("football-goals").textContent = footballGoals;
+  $("football-attempts").textContent = footballAttempts;
 }
 
 function resetFootball() {
   if (footballAttempts > 0) {
-    saveFootballScore(footballGoals, footballAttempts);
+    saveScore(FOOTBALL_KEY, footballGoals, footballAttempts, "Goals");
   }
 
   footballGoals = 0;
   footballAttempts = 0;
 
-  document.getElementById("football-goals").textContent = 0;
-  document.getElementById("football-attempts").textContent = 0;
+  updateFootballUI();
 
-  var resultBox = document.getElementById("football-result");
+  var resultBox = $("football-result");
   resultBox.textContent = "";
   resultBox.className = "result-box";
 
-  document.getElementById("goalkeeper").style.transform = "translateX(0px)";
+  $("goalkeeper").style.transform = "translateX(0px)";
 
   removeClasses(
     ["net-left", "net-center", "net-right"],
@@ -68,34 +83,9 @@ function resetFootball() {
   );
 }
 
-function saveFootballScore(goals, attempts) {
-  var scores = JSON.parse(localStorage.getItem("footballScores")) || [];
-  scores.push("Goals: " + goals + " / Attempts: " + attempts);
-  scores = scores.slice(-5);
-  localStorage.setItem("footballScores", JSON.stringify(scores));
-  loadFootballHistory();
-}
-
-function loadFootballHistory() {
-  var scores = JSON.parse(localStorage.getItem("footballScores")) || [];
-  var list = document.getElementById("football-history");
-
-  list.innerHTML = scores.length
-    ? ""
-    : "<li>No previous scores yet</li>";
-
-  scores.forEach(score => {
-    var li = document.createElement("li");
-    li.textContent = score;
-    list.appendChild(li);
-  });
-}
-
-var cricketRuns = 0;
-var cricketOut = false;
 
 function playBall(playerNumber) {
-  var resultBox = document.getElementById("cricket-result");
+  var resultBox = $("cricket-result");
 
   if (cricketOut) {
     resultBox.textContent = "You are OUT! Click New Innings to play again.";
@@ -105,22 +95,25 @@ function playBall(playerNumber) {
 
   var computerNumber = Math.floor(Math.random() * 6) + 1;
 
-  document.getElementById("player-num").textContent = playerNumber;
-  document.getElementById("computer-num").textContent = computerNumber;
+  $("player-num").textContent = playerNumber;
+  $("computer-num").textContent = computerNumber;
 
   if (playerNumber === computerNumber) {
     cricketOut = true;
     resultBox.textContent =
       "OUT! Both picked " + playerNumber + ". Final score: " + cricketRuns + " runs";
     resultBox.className = "result-box out";
-    document.getElementById("cricket-status").textContent = "OUT";
-    saveCricketScore(cricketRuns);
+
+    $("cricket-status").textContent = "OUT";
+
+    saveScore(CRICKET_KEY, cricketRuns, 0, "Score");
   } else {
     cricketRuns += playerNumber;
     resultBox.textContent =
       playerNumber + " run(s) scored! Computer chose " + computerNumber;
     resultBox.className = "result-box run";
-    document.getElementById("cricket-runs").textContent = cricketRuns;
+
+    $("cricket-runs").textContent = cricketRuns;
     animateScore("cricket-runs");
   }
 }
@@ -129,31 +122,32 @@ function resetCricket() {
   cricketRuns = 0;
   cricketOut = false;
 
-  document.getElementById("cricket-runs").textContent = 0;
-  document.getElementById("cricket-status").textContent = "Batting";
-  document.getElementById("player-num").textContent = "?";
-  document.getElementById("computer-num").textContent = "?";
+  $("cricket-runs").textContent = 0;
+  $("cricket-status").textContent = "Batting";
+  $("player-num").textContent = "?";
+  $("computer-num").textContent = "?";
 
-  var resultBox = document.getElementById("cricket-result");
+  var resultBox = $("cricket-result");
   resultBox.textContent = "";
   resultBox.className = "result-box";
 }
 
-function saveCricketScore(runs) {
-  var scores = JSON.parse(localStorage.getItem("cricketScores")) || [];
-  scores.push("Score: " + runs + " runs");
+
+function saveScore(key, mainValue, extraValue, label) {
+  var scores = JSON.parse(localStorage.getItem(key)) || [];
+  scores.push(label + ": " + mainValue + (extraValue ? " / Attempts: " + extraValue : ""));
   scores = scores.slice(-5);
-  localStorage.setItem("cricketScores", JSON.stringify(scores));
-  loadCricketHistory();
+  localStorage.setItem(key, JSON.stringify(scores));
+
+  if (key === FOOTBALL_KEY) loadHistory(FOOTBALL_KEY, "football-history", "No previous scores yet");
+  if (key === CRICKET_KEY) loadHistory(CRICKET_KEY, "cricket-history", "No previous scores yet");
 }
 
-function loadCricketHistory() {
-  var scores = JSON.parse(localStorage.getItem("cricketScores")) || [];
-  var list = document.getElementById("cricket-history");
+function loadHistory(key, elementId, emptyText) {
+  var scores = JSON.parse(localStorage.getItem(key)) || [];
+  var list = $(elementId);
 
-  list.innerHTML = scores.length
-    ? ""
-    : "<li>No previous scores yet</li>";
+  list.innerHTML = scores.length ? "" : "<li>" + emptyText + "</li>";
 
   scores.forEach(score => {
     var li = document.createElement("li");
@@ -162,8 +156,9 @@ function loadCricketHistory() {
   });
 }
 
+
 function animateScore(elementId) {
-  var el = document.getElementById(elementId);
+  var el = $(elementId);
   el.classList.add("bump");
   setTimeout(() => el.classList.remove("bump"), 300);
 }
