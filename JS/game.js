@@ -40,7 +40,7 @@ function shoot(playerDirection) {
     animateScore("football-goals");
   } else {
     netCell.classList.add("save-flash");
-    resultBox.textContent = "SAVED! The goalkeeper blocked it!";
+    resultBox.textContent = "SAVED!! The goalkeeper blocked it!";
     resultBox.className = "result-box miss";
   }
 

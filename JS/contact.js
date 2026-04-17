@@ -1,49 +1,61 @@
 function validateForm() {
-  var name = document.getElementById("name").value.trim();
-  var email = document.getElementById("email").value.trim();
-  var message = document.getElementById("message").value.trim();
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
 
-  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const nameError = document.getElementById("name-error");
+  const emailError = document.getElementById("email-error");
+  const messageError = document.getElementById("message-error");
+  const resultBox = document.getElementById("form-result");
 
-  var isValid = true;
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const message = messageInput.value.trim();
 
-  document.getElementById("name").classList.remove("error-border");
-  document.getElementById("email").classList.remove("error-border");
-  document.getElementById("message").classList.remove("error-border");
-  document.getElementById("name-error").classList.remove("show");
-  document.getElementById("email-error").classList.remove("show");
-  document.getElementById("message-error").classList.remove("show");
-  document.getElementById("form-result").className = "form-result";
-  document.getElementById("form-result").textContent = "";
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  let isValid = true;
+
+  nameInput.classList.remove("error-border");
+  emailInput.classList.remove("error-border");
+  messageInput.classList.remove("error-border");
+
+  nameError.classList.remove("show");
+  emailError.classList.remove("show");
+  messageError.classList.remove("show");
+
+  resultBox.className = "form-result";
+  resultBox.textContent = "";
 
   if (name === "") {
-    document.getElementById("name").classList.add("error-border");
-    document.getElementById("name-error").classList.add("show");
+    nameInput.classList.add("error-border");
+    nameError.classList.add("show");
     isValid = false;
   }
 
   if (email === "" || !emailPattern.test(email)) {
-    document.getElementById("email").classList.add("error-border");
-    document.getElementById("email-error").classList.add("show");
+    emailInput.classList.add("error-border");
+    emailError.classList.add("show");
     isValid = false;
   }
 
   if (message === "") {
-    document.getElementById("message").classList.add("error-border");
-    document.getElementById("message-error").classList.add("show");
+    messageInput.classList.add("error-border");
+    messageError.classList.add("show");
     isValid = false;
   }
 
-  var resultBox = document.getElementById("form-result");
-
   if (isValid) {
-    resultBox.textContent = "Message sent successfully! We will get back to you soon.";
+    resultBox.textContent =
+      "Message sent successfully! We will get back to you soon.";
     resultBox.className = "form-result success";
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("message").value = "";
+
+    nameInput.value = "";
+    emailInput.value = "";
+    messageInput.value = "";
   } else {
-    resultBox.textContent = "Please fix the errors above and try again.";
+    resultBox.textContent =
+      "Please fix the errors above and try again.";
     resultBox.className = "form-result error-result";
   }
 }
