@@ -532,21 +532,14 @@ footer p {
   display: block;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .topics-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .hero h2 {
-    font-size: 26px;
-  }
-  .navbar {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .score-area {
-    gap: 20px;
-  }
-  .btn-row {
-    flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .topics-grid {
+    grid-template-columns: 1fr;
   }
 }
