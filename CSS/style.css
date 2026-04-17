@@ -6,6 +6,9 @@
   --gold: #f5c518;
   --danger: #e74c3c;
 }
+a, button, .btn, .topic-card, .member-card, nav a {
+  transition: all 0.25s ease-in-out;
+}
 * {
   margin: 0;
   padding: 0;
