@@ -1,3 +1,11 @@
+:root {
+  --primary: #3b6a93;
+  --dark: #1a1a1a;
+  --bg: #f9f9f9;
+  --text: #222;
+  --gold: #f5c518;
+  --danger: #e74c3c;
+}
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +15,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
-  color: #222;
+  color: #1f3d2f;
 }
 
 header {
@@ -389,7 +397,7 @@ footer p {
 }
 
 .history-box {
-  background-color: #f9f9f9;
+  background-color: #888;
   border: 1px solid #ddd;
   border-radius: 6px;
   padding: 12px 14px;
