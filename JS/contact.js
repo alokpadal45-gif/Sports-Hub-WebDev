@@ -1,7 +1,11 @@
 function validateForm() {
+  console.log("Form validation started");
+
   var name = document.getElementById("name").value.trim();
   var email = document.getElementById("email").value.trim();
   var message = document.getElementById("message").value.trim();
+
+  console.log(name, email, message);
 
   var isValid = true;
 
@@ -15,19 +19,21 @@ function validateForm() {
   document.getElementById("form-result").textContent = "";
 
   if (name === "") {
+    console.log("invalid name");
     document.getElementById("name").classList.add("error-border");
     document.getElementById("name-error").classList.add("show");
     isValid = false;
   }
 
-
   if (email === "" || email.indexOf("@") === -1) {
+    console.log("invalid email");
     document.getElementById("email").classList.add("error-border");
     document.getElementById("email-error").classList.add("show");
     isValid = false;
   }
 
   if (message === "") {
+    console.log("invalid message");
     document.getElementById("message").classList.add("error-border");
     document.getElementById("message-error").classList.add("show");
     isValid = false;
@@ -36,12 +42,14 @@ function validateForm() {
   var resultBox = document.getElementById("form-result");
 
   if (isValid) {
+    console.log("form valid");
     resultBox.textContent = "Message sent successfully! We will get back to you soon.";
     resultBox.className = "form-result success";
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
     document.getElementById("message").value = "";
   } else {
+    console.log("form invalid");
     resultBox.textContent = "Please fix the errors above and try again.";
     resultBox.className = "form-result error-result";
   }
